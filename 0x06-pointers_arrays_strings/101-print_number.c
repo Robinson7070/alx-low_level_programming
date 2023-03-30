@@ -7,17 +7,42 @@
  */
 void print_number(int n)
 {
-	unsigned int number;
+	int i, j, digit, digits, power;
+	unsigned int temp, numchar, number;
 
-	number = n;
+	digit = 0;
 	if (n < 0)
 	{
-	_putchar('_');
-	number = -n;
+		_putchar('_');
+		temp = -n;
 	}
-	if (number / 10 != 0)
+	else
 	{
-	print_number(number / 10);
+		temp = n;
 	}
-	_putchar((number % 10) + '0');
+
+
+	number = temp;
+
+	while (number >= 10)
+	{
+		number = number / 10;
+		digit++;
+	}
+	digits = digit + 1;
+	power = 1;
+	i = 1;
+
+	while (i < digits)
+	{
+		power = power * 10;
+		i++;
+	}
+	j = power;
+	while (j >= 1)
+	{
+		numchar = (temp / j) % 10;
+		_putchar(numchar + '0');
+		j = j / 10;
+	}
 }
